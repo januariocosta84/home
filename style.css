@@ -1,0 +1,113 @@
+
+  .clock-container {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #e4d1d1;
+    box-shadow: 0px 4px 8px rgba(0, 255, 255, 0.7); /* Custom cyan shadow */
+  }
+  
+  .time {
+    font-size: 4em;
+    font-weight: bold;
+  }
+  
+  .date {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  .switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  label {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+  }
+  
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #4caf50;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  #formatText {
+    margin-left: 10px;
+    font-size: 1.2em;
+  }
+  
+  @keyframes digitalMove {
+    0% {
+        transform: translateX(-100%);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 1;
+    }
+}
+
+.digital-text {
+    font-family: 'Courier New', monospace;
+    font-size: 48px;
+    letter-spacing: 5px;
+    color: rgba(0, 255, 255, 0.7); /* Digital green color */
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.7), 0 0 15px rgba(0, 255, 255, 0.7); /* Digital glow effect */
+    animation: digitalMove 10s linear infinite; /* Slower, smoother animation */
+    white-space: nowrap; /* Prevent the text from wrapping */
+    overflow: hidden; /* Hide any overflow text */
+    text-overflow: ellipsis; /* Ensure text stays in one line */
+    width: 100%; /* Make sure it spans the width of the container */
+    display: block; /* Ensure it takes up space in a block */
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 600px) {
+    .digital-text {
+        font-size: 32px; /* Adjust font size for smaller screens */
+        letter-spacing: 3px; /* Adjust letter-spacing for mobile */
+    }
+}
